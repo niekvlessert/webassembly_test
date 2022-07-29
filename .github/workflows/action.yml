@@ -13,5 +13,5 @@ jobs:
         run: emcc -v
       - name: compile
         run: |
-        emcc -c hello.c -o hello.o
-        emcc hello.o -o hello.html
+          emcc -c hello.c -o hello.o
+          emcc hello.o -o hello.html
