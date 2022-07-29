@@ -25,4 +25,6 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: upload hello.js
-          path: hello.html hello.js  
+          path: |
+            hello.js
+            hello.html
