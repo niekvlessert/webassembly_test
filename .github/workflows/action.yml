@@ -1,5 +1,7 @@
 name: "emsdk"
 on: [push]
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -19,22 +21,11 @@ jobs:
         run: emcc -v
       - name: compile
         run: |
+          mkdir build
           emcc -c hello.c -o hello.o
           emcc hello.o -o hello.html
-      - name: Archive
-        uses: actions/upload-artifact@master
+          mv hello.* build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: upload hello.js
-          path: |
-            hello.js
-            hello.html
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@main
+          folder: build # The folder the action should deploy.
