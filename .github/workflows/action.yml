@@ -5,7 +5,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out source
+        uses: actions/checkout@v1
       - uses: mymindstorm/setup-emsdk@v11
 
       - name: Verify
         run: emcc -v
+      - name: compile
+        run: |
+        emcc -c hello.c -o hello.o
+        emcc hello.o -o hello.html
