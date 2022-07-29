@@ -25,6 +25,7 @@ jobs:
           emcc -c hello.c -o hello.o
           emcc hello.o -o hello.html
           mv hello.* build
+          echo "hallo" > build/index.html
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
