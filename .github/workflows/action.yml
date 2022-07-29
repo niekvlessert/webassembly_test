@@ -15,3 +15,8 @@ jobs:
         run: |
           emcc -c hello.c -o hello.o
           emcc hello.o -o hello.html
+      - name: Archive
+        uses: actions/upload-artifact@master
+        with:
+          name: upload hello.js
+          path: hello.html hello.js  
